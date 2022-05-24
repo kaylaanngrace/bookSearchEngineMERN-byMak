@@ -30,14 +30,14 @@ app.use(express.json());
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/public')));
+  app.use(express.static('public'));
 }
 
 // app.use(routes);
 
 //get all
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 db.once('open', () => {
